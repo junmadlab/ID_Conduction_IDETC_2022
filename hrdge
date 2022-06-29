@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+python3 'hr_setup.py'
+for i in {1..1323} #3 runs per image, 441 images
+do
+python3 'hr_data_gen.py'
+done
+python3 'hr_file_combiner.py'

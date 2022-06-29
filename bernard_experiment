@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+python3 'setup.py' #run file to set up iteration tracking arrays
+python3 'model_trainer.py' #run file to train models and store predictions
+
+#generate trajectories for each train_test split for KNN predictitons. Note: 50 splits * 4 images per split * 4 runs per image = 800
+for i in {1..800}
+do
+python3 'top_opt_knn.py'
+done
+
+#generate trajectories for each train_test split for RF predictitons
+#for i in {1..800}
+#do
+#python3 'top_opt_rf.py'
+#done
+
+#generate trajectories for each train_test split for controls
+#for i in {1..800}
+#do
+#python3 'top_opt_control.py'
+#done
+
+python3 'combiner.py' #combine arrays and delete superfluous ones
